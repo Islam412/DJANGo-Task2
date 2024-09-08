@@ -54,3 +54,10 @@ def LoginView(request):
             messages.error(request, 'User does not exist')
 
     return HttpResponseRedirect("/")
+
+
+
+def LogoutView(request):
+    logout(request)
+    messages.success(request, 'You have been logged out')
+    return redirect("userauths:sign-up")
