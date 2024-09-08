@@ -16,3 +16,15 @@ def student(request):
         'query': query
     }
     return render(request, 'students/home.html', context)
+
+
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('students:student')
+    else:
+        form = StudentForm()
+    
+    return render(request, 'students/add_student.html', {'form': form})
