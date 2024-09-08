@@ -28,3 +28,29 @@ def RegisterView(request):
     
     context = {'form': form}
     return render(request, 'userauths/sign-up.html', context)
+
+
+def LoginView(request):
+    if request.user.is_authenticated:
+        return redirect('students:student')
+    
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(email=email)
+
+            user = authenticate(request, email=email, password=password)
+
+            if user is not None:
+                login(request, user)
+                messages.success(request, "You are Logged In")
+                return redirect('students:student')
+            else:
+                messages.error(request, 'Username or password does not exit.')
+        
+        except:
+            messages.error(request, 'User does not exist')
+
+    return HttpResponseRedirect("/")
