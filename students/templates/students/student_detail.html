@@ -2,12 +2,49 @@
 {% load static %}
 {% block body %}
 
-<h1>Student Details</h1>
-<p><strong>First Name:</strong> {{ student.first_name }}</p>
-<p><strong>Last Name:</strong> {{ student.last_name }}</p>
-<p><strong>Age:</strong> {{ student.age }}</p>
-<p><strong>Image:</strong> <img src="{{ student.img.url }}" alt="Student Image" width="200"></p>
-<a href="{% url 'students:edit_student' student.pk %}">Edit</a> |
-<a href="{% url 'students:delete_student' student.pk %}">Delete</a> |
-<a href="{% url 'students:student' %}">Back to List</a>
+<div class="container mt-4">
+    <h1 class="mb-4">Student Details</h1>
+    
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <strong>First Name:</strong>
+                </div>
+                <div class="col-md-8">
+                    {{ student.first_name }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <strong>Last Name:</strong>
+                </div>
+                <div class="col-md-8">
+                    {{ student.last_name }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <strong>Age:</strong>
+                </div>
+                <div class="col-md-8">
+                    {{ student.age }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <strong>Image:</strong>
+                </div>
+                <div class="col-md-8">
+                    <img src="{{ student.img.url }}" alt="Student Image" class="img-fluid" width="200">
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a href="{% url 'students:edit_student' student.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'students:delete_student' student.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'students:student' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
 {% endblock body %}
