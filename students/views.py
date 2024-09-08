@@ -48,3 +48,11 @@ def delete_student(request, pk):
         student.delete()
         return redirect('students:student')
     return render(request, 'students/delete_student.html', {'student': student})
+
+
+def student_detail(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+    context = {
+        'student': student
+    }
+    return render(request, 'students/student_detail.html', context)

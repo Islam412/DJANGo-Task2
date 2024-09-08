@@ -43,9 +43,9 @@
         <div class="grid-container">
             {% for student in students %}
                 <div class="card">
-                    <img src="{{ student.img.url }}" style="width:157.86px ; height:158.43px" class="card-img-top" alt="{{ student.first_name }}">
+                    <img src="{{ student.img.url }}" style="width:218px ; height:190px" class="card-img-top" alt="{{ student.first_name }}">
                     <div class="card-body">
-                        <h4 class="card-title">{{ student.first_name }}</h4>
+                        <h3 class="card-title">{{ student.first_name }}</h3>
                         <a href="{% url 'students:edit_student' student.pk %}" {{ student.first_name }} {{ student.last_name }} class="btn btn-primary">Edit</a>
                         <a href="{% url 'students:delete_student' student.pk %}" class="btn btn-danger">Delete</a>
                     </div>
