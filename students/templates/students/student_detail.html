@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<h1>Student Details</h1>
+<p><strong>First Name:</strong> {{ student.first_name }}</p>
+<p><strong>Last Name:</strong> {{ student.last_name }}</p>
+<p><strong>Age:</strong> {{ student.age }}</p>
+<p><strong>Image:</strong> <img src="{{ student.img.url }}" alt="Student Image" width="200"></p>
+<a href="{% url 'students:edit_student' student.pk %}">Edit</a> |
+<a href="{% url 'students:delete_student' student.pk %}">Delete</a> |
+<a href="{% url 'students:student' %}">Back to List</a>
+{% endblock body %}
